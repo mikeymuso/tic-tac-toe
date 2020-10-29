@@ -157,7 +157,9 @@ var UIController = (function () {
         document.querySelector(DOMStrings.nextPlayerMsg).innerHTML = msgWrap;
     }
 
-
+    var removeWinnerClass = function () {
+        document.querySelector(DOMStrings.nextPlayerMsg).classList.remove("winner");
+    }
 
     // Our globally accesible functions
     return {
@@ -178,7 +180,7 @@ var UIController = (function () {
         showBoard: function () {
             var board;
             board = document.querySelector(DOMStrings.boardContainer);
-            
+
             board.style.display = 'block';
         },
 
@@ -259,6 +261,8 @@ var UIController = (function () {
 
         displayWinner: function (name) {
             displayMsg(name + " is the winner!");
+            document.querySelector(DOMStrings.nextPlayerMsg).classList.add("winner");
+
         },
 
         displayDraw: function () {
@@ -279,15 +283,20 @@ var UIController = (function () {
 
             document.querySelector(DOMStrings.boardContainer).innerHTML = "";
             document.querySelector(DOMStrings.nextPlayerMsg).innerHTML = "";
+            removeWinnerClass();
 
             document.querySelector(DOMStrings.playerOneName).placeholder = "Player 1";
             document.querySelector(DOMStrings.playerTwoName).placeholder = "Player 2";
-            
+
             document.querySelector(DOMStrings.boardContainer).style.display = 'none';
-            
+
             AICheckboxes.AIArr = [false, false];
         },
 
+        removeWinClass: function() {
+            removeWinnerClass();
+        },
+        
         updateBoard: function (cellID, playerCounter) {
             var cell
 
@@ -395,6 +404,7 @@ var globalModule = (function (gameCtrl, playerCtrl, UICtrl, AICtrl) {
 
         playerNamesArr = UICtrl.getInputs();
         AIArr = UICtrl.getAICheckboxes();
+        UICtrl.removeWinClass();
 
         if (playerNamesArr !== -1) {
             gameCtrl.initGameCtrl();

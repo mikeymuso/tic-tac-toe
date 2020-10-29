@@ -76,3 +76,7 @@ input[type=text] {
     line-height: 40px;
     margin: 0 auto;
 }
+
+.winner {
+    background-image: linear-gradient(to right, #f2d3ea, #94e96c, #f2d3ea) !important;
+}

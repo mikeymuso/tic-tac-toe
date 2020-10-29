@@ -21,7 +21,7 @@ to keep code private and effectively group code.
 
 ## Launch 
 
-Link to live preview
+https://mikeymuso.github.io/tic-tac-toe/
 
 ## Decription
 
